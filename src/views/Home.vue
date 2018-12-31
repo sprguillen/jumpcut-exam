@@ -11,7 +11,7 @@
                   <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-card-text>
-                  <v-form @submit.prevent="setNextVal" id="sequence-form">
+                  <v-form @submit.prevent="runGenerator" id="sequence-form">
                     <v-layout wrap>
                       <v-flex xs12 sm12 md12 lg12>
                         <v-select
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import Even from '@/views/Even'
 
 export default {
@@ -141,7 +142,15 @@ export default {
       }
 
       return true
-    }
+    },
+
+    /**
+     * Call helper function map getters to assign getCurrentValue
+     * getter from the store to this.getCurrentValue
+     */
+    ...mapGetters([
+      'getCurrentValue'
+    ])
   },
   methods: {
 
@@ -149,15 +158,8 @@ export default {
      * Click handler function
      */
     setNextVal() {
-      this.runGenerator()
-      this.form.currentValue = this.$store.getters.getCurrentValue
-    },
-
-    /**
-     * Call vuex runGenerator action here
-     */
-    runGenerator() {
-      this.$store.dispatch('runGenerator', this.form.currentSequence)
+      this.runGenerator(this.form.currentSequence)
+      this.form.currentValue = this.getCurrentValue
     },
 
     /**
@@ -216,18 +218,22 @@ export default {
     },
 
     /**
-     * Calls the vuex mutation to set current start
+     * Call helper function map actions to assign runGenerator
+     * store to this.runGenerator
      */
-    setCurrentStart(currentStart) {
-      this.$store.commit('setCurrentStart', currentStart)
-    },
+    ...mapActions([
+      'runGenerator'
+    ]),
 
     /**
-     * Calls the vuex mutation to set current range
+     * Call helper function map mutations to assign setCurrentStart
+     * and setCurrentRange store to this.setCurrentStart and
+     * this.setCurrentRange
      */
-    setCurrentRange(currentRange) {
-      this.$store.commit('setCurrentRange', currentRange)
-    }
+    ...mapMutations([
+      'setCurrentStart',
+      'setCurrentRange'
+    ])
   },
   watch: {
 
