@@ -11,7 +11,7 @@
                   <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-card-text>
-                  <v-form @submit.prevent="runGenerator" id="sequence-form">
+                  <v-form @submit.prevent="setNextVal" id="sequence-form">
                     <v-layout wrap>
                       <v-flex xs12 sm12 md12 lg12>
                         <v-select
