@@ -7,7 +7,7 @@
             <v-flex xs12 sm8 md4>
               <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
-                  <v-toolbar-title>Online Math Sequence Calculator</v-toolbar-title>
+                  <v-toolbar-title id="card-title">Online Math Sequence Calculator</v-toolbar-title>
                   <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-card-text>
@@ -15,14 +15,17 @@
                     <v-layout wrap>
                       <v-flex xs12 sm12 md12 lg12>
                         <v-select
+                          id="sequence-field"
                           prepend-icon="input"
                           :items="sequenceList"
                           label="Mathematical Sequence"
                           v-model="form.currentSequence"
+                          data-sequence
                         ></v-select>
                       </v-flex>
                       <v-flex v-if="getCurrentSequence === 'range'" xs12 sm12 md6 lg6>
                         <v-text-field
+                          id="start-field"
                           prepend-icon="loupe"
                           label="Start"
                           :mask="numericalMask"
@@ -31,6 +34,7 @@
                       </v-flex>
                       <v-flex v-if="getCurrentSequence === 'range'" xs12 sm12 md6 lg6>
                         <v-text-field
+                          id="range-field"
                           prepend-icon="compare_arrows"
                           label="Range"
                           :mask="numericalMask"
@@ -39,6 +43,7 @@
                       </v-flex>
                       <v-flex xs12 sm12 md12 lg12>
                         <v-text-field
+                          id="value-field"
                           prepend-icon="keyboard_arrow_right"
                           name="result"
                           label="Result"
@@ -56,12 +61,14 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn
+                    id="submit-bttn"
                     :disabled="disableNextButton"
                     color="success"
                     form="sequence-form"
                     type="submit"
                   >Get Next Value</v-btn>
                   <v-btn color="error"
+                    id="clear-bttn"
                     :disabled="disableResetButton"
                     @click="hardReset">Reset</v-btn>
                 </v-card-actions>

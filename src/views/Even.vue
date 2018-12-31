@@ -1,6 +1,6 @@
 <template>
   <div class="even">
-    <v-chip :color="isEvenNumber ? 'teal' : 'error'" text-color="white">
+    <v-chip id="even-chip" :color="isEvenNumber ? 'teal' : 'error'" text-color="white">
       <v-avatar>
         <v-icon v-if="isEvenNumber">check_circle</v-icon>
         <v-icon v-else>highlight_off</v-icon>
@@ -14,7 +14,8 @@ export default {
   name: 'Even',
   props: {
     currentValue: {
-      required: true
+      required: true,
+      type: Number
     }
   },
   computed: {
