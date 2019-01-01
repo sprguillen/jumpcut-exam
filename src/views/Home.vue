@@ -175,13 +175,6 @@ export default {
     },
 
     /**
-     * Call vuex reset mutation here
-     */
-    resetForm() {
-      this.$store.commit('resetForm')
-    },
-
-    /**
      * Reset only the current value
      */
     softReset() {
@@ -232,7 +225,8 @@ export default {
      */
     ...mapMutations([
       'setCurrentStart',
-      'setCurrentRange'
+      'setCurrentRange',
+      'resetForm'
     ])
   },
   watch: {
