@@ -1,5 +1,7 @@
 # jumpcut-exam
 
+This is a graphical UI interface that implements the generator functions of 3 mathematical sequences: factorial, fibonacci and range implemented by using VueJS and Vuex.
+
 ## Project setup
 ```
 yarn install
@@ -7,25 +9,20 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
+yarn build
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+yarn lint
 ```
 
 ### Run your unit tests
 ```
-yarn run test:unit
+yarn test:unit
 ```
